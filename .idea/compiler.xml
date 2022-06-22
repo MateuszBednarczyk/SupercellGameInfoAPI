@@ -12,9 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ClashOfClansModule" target="18" />
-      <module name="ClashRoyaleModule" target="18" />
-      <module name="MainModule" target="18" />
+      <module name="ClashOfClansModule" target="17" />
+      <module name="ClashRoyaleModule" target="17" />
+      <module name="MainModule" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
