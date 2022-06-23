@@ -3,16 +3,13 @@ package com.matthew.clashofclansmodule.Models;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"tag", "name", "clanLevel", "badgeUrls"})
 @Generated("jsonschema2pojo")
-@Entity
-@Table(name = "clan")
 public class Clan {
 
     @JsonProperty("tag")

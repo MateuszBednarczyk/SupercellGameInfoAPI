@@ -11,8 +11,6 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"name", "level", "maxLevel", "village"})
 @Generated("jsonschema2pojo")
-@Entity
-@Table(name = "troop")
 public class Troop {
 
     @JsonProperty("name")

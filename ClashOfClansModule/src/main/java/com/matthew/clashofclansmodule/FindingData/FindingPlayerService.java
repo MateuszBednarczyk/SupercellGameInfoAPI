@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import okhttp3.ResponseBody;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
@@ -23,16 +22,15 @@ class FindingPlayerService {
     String url = "https://api.clashofclans.com/v1/players/%23";
     ObjectMapper objectMapper = new ObjectMapper();
 
-    public Response findPlayer(String playerTag) throws IOException {
+    public PlayerModel findPlayer(String playerTag) throws IOException {
 
         Request request = buildRequest(playerTag);
 
         try (Response response = httpClient.newCall(request).execute()) {
 
             assert response.body() != null;
-            PlayerModel entity = objectMapper.readValue(response.body().string(), PlayerModel.class);
-            log.info(entity.getName().toString());
-            return response;
+            PlayerModel playerModel = objectMapper.readValue(response.body().string(), PlayerModel.class);
+            return playerModel;
 
         }
 
