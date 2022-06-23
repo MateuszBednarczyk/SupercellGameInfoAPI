@@ -1,45 +1,14 @@
 package com.matthew.clashofclansmodule.Models;
 
+import com.fasterxml.jackson.annotation.*;
+
+import javax.annotation.Generated;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.matthew.clashofclansmodule.Spell;
-import com.matthew.clashofclansmodule.Troop;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-    "tag",
-    "name",
-    "townHallLevel",
-    "expLevel",
-    "trophies",
-    "bestTrophies",
-    "warStars",
-    "attackWins",
-    "defenseWins",
-    "builderHallLevel",
-    "versusTrophies",
-    "bestVersusTrophies",
-    "versusBattleWins",
-    "role",
-    "warPreference",
-    "donations",
-    "donationsReceived",
-    "clan",
-    "achievements",
-    "versusBattleWinCount",
-    "labels",
-    "troops",
-    "heroes",
-    "spells"
-})
+@JsonPropertyOrder({"tag", "name", "townHallLevel", "expLevel", "trophies", "bestTrophies", "warStars", "attackWins", "defenseWins", "builderHallLevel", "versusTrophies", "bestVersusTrophies", "versusBattleWins", "role", "warPreference", "donations", "donationsReceived", "clan", "achievements", "versusBattleWinCount", "labels", "troops", "heroes", "spells"})
 @Generated("jsonschema2pojo")
 public class PlayerModel {
 
