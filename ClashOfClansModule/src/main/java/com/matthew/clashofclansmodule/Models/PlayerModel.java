@@ -3,6 +3,8 @@ package com.matthew.clashofclansmodule.Models;
 import com.fasterxml.jackson.annotation.*;
 
 import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +12,8 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"tag", "name", "townHallLevel", "expLevel", "trophies", "bestTrophies", "warStars", "attackWins", "defenseWins", "builderHallLevel", "versusTrophies", "bestVersusTrophies", "versusBattleWins", "role", "warPreference", "donations", "donationsReceived", "clan", "achievements", "versusBattleWinCount", "labels", "troops", "heroes", "spells"})
 @Generated("jsonschema2pojo")
+@Entity
+@Table(name = "players")
 public class PlayerModel {
 
     @JsonProperty("tag")
