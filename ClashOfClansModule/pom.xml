@@ -29,17 +29,25 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>com.squareup.okio</groupId>
+            <artifactId>okio-jvm</artifactId>
+            <version>3.1.0</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.freefair.okhttp-spring-boot/okhttp3-spring-boot-starter -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <groupId>io.freefair.okhttp-spring-boot</groupId>
+            <artifactId>okhttp3-spring-boot-starter</artifactId>
+            <version>2.6.8</version>
         </dependency>
+
+
     </dependencies>
 
     <build>
