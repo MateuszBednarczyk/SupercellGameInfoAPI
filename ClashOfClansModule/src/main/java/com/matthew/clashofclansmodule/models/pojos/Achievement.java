@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.Models;
+package com.matthew.clashofclansmodule.models.pojos;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -10,8 +10,6 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"name", "stars", "value", "target", "info", "completionInfo", "village"})
 @Generated("jsonschema2pojo")
-@Entity
-@Table(name = "achievement")
 public class Achievement {
 
     @JsonProperty("name")

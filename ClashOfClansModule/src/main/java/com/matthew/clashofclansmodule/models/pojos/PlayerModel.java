@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.Models;
+package com.matthew.clashofclansmodule.models.pojos;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -11,8 +11,6 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"tag", "name", "townHallLevel", "expLevel", "trophies", "bestTrophies", "warStars", "attackWins", "defenseWins", "builderHallLevel", "versusTrophies", "bestVersusTrophies", "versusBattleWins", "role", "warPreference", "donations", "donationsReceived", "clan", "achievements", "versusBattleWinCount", "labels", "troops", "heroes", "spells"})
 @Generated("jsonschema2pojo")
-@Table(name = "players")
-@Entity
 public class PlayerModel {
 
     @Id

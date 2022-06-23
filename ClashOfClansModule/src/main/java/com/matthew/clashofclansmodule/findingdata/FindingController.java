@@ -1,6 +1,6 @@
-package com.matthew.clashofclansmodule.FindingData;
+package com.matthew.clashofclansmodule.findingdata;
 
-import com.matthew.clashofclansmodule.Models.PlayerModel;
+import com.matthew.clashofclansmodule.models.entities.PlayerEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +15,7 @@ public class FindingController {
     private final FindingFacade findingFacade;
 
     @GetMapping("/findplayer/{playerTag}")
-    public PlayerModel findPlayer(@PathVariable String playerTag) throws IOException {
+    public PlayerEntity findPlayer(@PathVariable String playerTag) throws IOException {
 
         return findingFacade.findPlayer(playerTag);
 

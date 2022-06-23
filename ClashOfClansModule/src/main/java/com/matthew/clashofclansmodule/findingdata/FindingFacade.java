@@ -1,6 +1,6 @@
-package com.matthew.clashofclansmodule.FindingData;
+package com.matthew.clashofclansmodule.findingdata;
 
-import com.matthew.clashofclansmodule.Models.PlayerModel;
+import com.matthew.clashofclansmodule.models.entities.PlayerEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ class FindingFacade {
 
     private final FindingPlayerService findingPlayerService;
 
-    public PlayerModel findPlayer(String playerTag) throws IOException {
+    public PlayerEntity findPlayer(String playerTag) throws IOException {
 
         return findingPlayerService.findPlayer(playerTag);
 
