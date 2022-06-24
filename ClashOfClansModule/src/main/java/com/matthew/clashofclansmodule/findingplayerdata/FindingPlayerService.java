@@ -1,6 +1,7 @@
 package com.matthew.clashofclansmodule.findingplayerdata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.matthew.clashofclansmodule.RequestBuilder;
 import com.matthew.clashofclansmodule.entities.PlayerEntity;
 import com.matthew.clashofclansmodule.pojos.PlayerModel;
 import com.matthew.clashofclansmodule.repositories.PlayerRepository;
@@ -14,7 +15,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 
-import static com.matthew.clashofclansmodule.ConstData.*;
+import static com.matthew.clashofclansmodule.ConstData.PLAYER_FINDING_URL;
+import static com.matthew.clashofclansmodule.ConstData.TOKEN;
 
 @Service
 @RequiredArgsConstructor
@@ -23,11 +25,12 @@ class FindingPlayerService {
 
     private final OkHttpClient httpClient;
     private final PlayerRepository playerRepository;
+    private final RequestBuilder requestBuilder;
     ObjectMapper objectMapper = new ObjectMapper();
 
     public PlayerEntity findPlayer(String playerTag) throws IOException {
 
-        Request request = buildRequest(playerTag);
+        Request request = requestBuilder.buildRequest(PLAYER_FINDING_URL + playerTag, TOKEN);
 
         try (Response response = httpClient.newCall(request).execute()) {
 
@@ -68,12 +71,5 @@ class FindingPlayerService {
         return playerEntity;
     }
 
-    @NotNull
-    private Request buildRequest(String playerTag) {
-        return new Request.Builder()
-                .url(PLAYER_FINDING_URL + playerTag)
-                .header("Authorization", TOKEN)
-                .build();
-    }
 
 }
