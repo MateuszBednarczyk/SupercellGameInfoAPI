@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.models.pojos;
+package com.matthew.clashofclansmodule.pojos;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -7,14 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"small", "large", "medium"})
+@JsonPropertyOrder({"small", "medium"})
 @Generated("jsonschema2pojo")
-public class BadgeUrls {
+public class IconUrls {
+
 
     @JsonProperty("small")
     private String small;
-    @JsonProperty("large")
-    private String large;
     @JsonProperty("medium")
     private String medium;
     @JsonIgnore
@@ -28,16 +27,6 @@ public class BadgeUrls {
     @JsonProperty("small")
     public void setSmall(String small) {
         this.small = small;
-    }
-
-    @JsonProperty("large")
-    public String getLarge() {
-        return large;
-    }
-
-    @JsonProperty("large")
-    public void setLarge(String large) {
-        this.large = large;
     }
 
     @JsonProperty("medium")

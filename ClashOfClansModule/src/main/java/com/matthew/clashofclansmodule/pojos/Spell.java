@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.models.pojos;
+package com.matthew.clashofclansmodule.pojos;
 
 import com.fasterxml.jackson.annotation.*;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({"name", "level", "maxLevel", "village"})
 @Generated("jsonschema2pojo")
-public class Hero {
+public class Spell {
 
     @JsonProperty("name")
     private String name;

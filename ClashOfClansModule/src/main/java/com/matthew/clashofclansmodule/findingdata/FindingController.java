@@ -1,6 +1,6 @@
 package com.matthew.clashofclansmodule.findingdata;
 
-import com.matthew.clashofclansmodule.models.entities.PlayerEntity;
+import com.matthew.clashofclansmodule.entities.PlayerEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

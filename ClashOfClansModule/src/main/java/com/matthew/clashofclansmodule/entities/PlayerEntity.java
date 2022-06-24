@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.models.entities;
+package com.matthew.clashofclansmodule.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

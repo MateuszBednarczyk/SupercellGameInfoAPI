@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.models.pojos;
+package com.matthew.clashofclansmodule.pojos;
 
 import com.fasterxml.jackson.annotation.*;
 
