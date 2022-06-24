@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.findingdata;
+package com.matthew.clashofclansmodule.findingplayerdata;
 
 import com.matthew.clashofclansmodule.entities.PlayerEntity;
 import lombok.RequiredArgsConstructor;

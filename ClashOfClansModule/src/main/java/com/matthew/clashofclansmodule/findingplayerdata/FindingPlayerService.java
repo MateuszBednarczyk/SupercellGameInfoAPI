@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.findingdata;
+package com.matthew.clashofclansmodule.findingplayerdata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matthew.clashofclansmodule.entities.PlayerEntity;
