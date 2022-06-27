@@ -39,13 +39,13 @@ class ClanService {
 
             return createEntityToReturn(clanTag);
 
-        } else if (checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
+        } else if (!checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
 
-            return clanRepository.findByTag(clanTag);
+            return entityGotFromDatabase;
 
         } else {
 
-            return entityGotFromDatabase;
+            throw new IOException("Can't send request");
 
         }
 
