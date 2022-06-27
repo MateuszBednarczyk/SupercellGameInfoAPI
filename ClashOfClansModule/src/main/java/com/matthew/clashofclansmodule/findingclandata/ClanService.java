@@ -45,7 +45,7 @@ class ClanService {
 
         } else {
 
-            throw new IOException("Can't send request");
+            return createEntityToReturn(clanTag);
 
         }
 
