@@ -33,7 +33,7 @@ class ClanService {
     @Transactional
     public ClanEntity findClan(String clanTag) throws IOException {
 
-        ClanEntity entityGotFromDatabase = clanRepository.findByTag(clanTag);
+        ClanEntity entityGotFromDatabase = clanRepository.findByTag("#" + clanTag);
 
         if (entityGotFromDatabase == null) {
 
