@@ -41,6 +41,7 @@ class ClanService {
 
         } else if (!checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
 
+            log.info(String.valueOf(checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)));
             return entityGotFromDatabase;
 
         } else {
