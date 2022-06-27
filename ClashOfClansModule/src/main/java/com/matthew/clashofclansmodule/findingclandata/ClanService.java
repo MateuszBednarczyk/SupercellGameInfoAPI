@@ -13,6 +13,7 @@ import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
@@ -29,25 +30,18 @@ class ClanService {
     private final ObjectMapper objectMapper;
     LocalDateTime now = LocalDateTime.now();
 
+    @Transactional
     public ClanEntity findClan(String clanTag) throws IOException {
 
         ClanEntity entityGotFromDatabase = clanRepository.findByTag(clanTag);
 
         if (entityGotFromDatabase == null) {
 
-            ClanEntity clanEntity = createEntityToReturn(clanTag);
-
-            return clanEntity;
+            return createEntityToReturn(clanTag);
 
         } else if (checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
 
-            log.info(entityGotFromDatabase.getName());
-            clanRepository.deleteByTag(clanTag);
-
-            ClanEntity clanEntity = createEntityToReturn(clanTag);
-            clanRepository.save(clanEntity);
-
-            return clanEntity;
+            return clanRepository.findByTag(clanTag);
 
         } else {
 
@@ -75,7 +69,10 @@ class ClanService {
 
             }
 
-            return new ClanEntity(clanModel.getTag(), clanModel.getName(), clanModel.getClanLevel(), now);
+            ClanEntity clanEntity = new ClanEntity(clanModel.getTag(), clanModel.getName(), clanModel.getClanLevel(), now);
+            clanRepository.save(clanEntity);
+
+            return clanEntity;
 
         }
 
