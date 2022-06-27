@@ -1,6 +1,7 @@
 package com.matthew.clashofclansmodule.pojos;
 
 import com.fasterxml.jackson.annotation.*;
+import org.springframework.lang.Nullable;
 
 import javax.annotation.Generated;
 import javax.persistence.*;
@@ -51,6 +52,7 @@ public class PlayerModel {
     @JsonProperty("donationsReceived")
     private Integer donationsReceived;
     @JsonProperty("clan")
+    @Nullable
     private Clan clan;
     @JsonProperty("achievements")
     private List<Achievement> achievements = null;

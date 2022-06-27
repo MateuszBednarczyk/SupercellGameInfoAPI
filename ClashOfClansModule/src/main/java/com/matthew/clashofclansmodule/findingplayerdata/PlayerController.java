@@ -10,14 +10,14 @@ import java.io.IOException;
 
 @RestController
 @RequiredArgsConstructor
-public class FindingController {
+class PlayerController {
 
-    private final FindingFacade findingFacade;
+    private final PlayerFacade playerFacade;
 
     @GetMapping("/findplayer/{playerTag}")
     public PlayerEntity findPlayer(@PathVariable String playerTag) throws IOException {
 
-        return findingFacade.findPlayer(playerTag);
+        return playerFacade.findPlayer(playerTag);
 
     }
 

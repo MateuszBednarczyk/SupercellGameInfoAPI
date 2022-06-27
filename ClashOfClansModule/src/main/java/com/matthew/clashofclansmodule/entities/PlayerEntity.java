@@ -2,6 +2,7 @@ package com.matthew.clashofclansmodule.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
@@ -66,9 +67,10 @@ public class PlayerEntity {
     private Integer donationsReceived;
 
     @JsonProperty("clan")
+    @Nullable
     private String clanName;
 
-    public PlayerEntity(String tag, String name, Integer townHallLevel, Integer expLevel, Integer trophies, Integer bestTrophies, Integer warStars, Integer attackWins, Integer defenseWins, Integer builderHallLevel, Integer versusTrophies, Integer bestVersusTrophies, Integer versusBattleWins, String role, String warPreference, Integer donations, Integer donationsReceived, String clanName) {
+    public PlayerEntity(String tag, String name, Integer townHallLevel, Integer expLevel, Integer trophies, Integer bestTrophies, Integer warStars, Integer attackWins, Integer defenseWins, Integer builderHallLevel, Integer versusTrophies, Integer bestVersusTrophies, Integer versusBattleWins, String role, String warPreference, Integer donations, Integer donationsReceived) {
         this.tag = tag;
         this.name = name;
         this.townHallLevel = townHallLevel;
@@ -86,7 +88,6 @@ public class PlayerEntity {
         this.warPreference = warPreference;
         this.donations = donations;
         this.donationsReceived = donationsReceived;
-        this.clanName = clanName;
     }
 
     public PlayerEntity() {

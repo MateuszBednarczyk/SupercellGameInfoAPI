@@ -8,13 +8,13 @@ import java.io.IOException;
 
 @Service
 @RequiredArgsConstructor
-class FindingFacade {
+class PlayerFacade {
 
-    private final FindingPlayerService findingPlayerService;
+    private final PlayerService playerService;
 
     public PlayerEntity findPlayer(String playerTag) throws IOException {
 
-        return findingPlayerService.findPlayer(playerTag);
+        return playerService.findPlayer(playerTag);
 
     }
 

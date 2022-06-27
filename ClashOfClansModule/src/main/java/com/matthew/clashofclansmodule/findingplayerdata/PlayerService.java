@@ -16,12 +16,11 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 
 import static com.matthew.clashofclansmodule.ConstData.PLAYER_FINDING_URL;
-import static com.matthew.clashofclansmodule.ConstData.TOKEN;
 
 @Service
 @RequiredArgsConstructor
 @Slf4j
-class FindingPlayerService {
+class PlayerService {
 
     private final OkHttpClient httpClient;
     private final PlayerRepository playerRepository;
@@ -30,7 +29,7 @@ class FindingPlayerService {
 
     public PlayerEntity findPlayer(String playerTag) throws IOException {
 
-        Request request = requestBuilder.buildRequest(PLAYER_FINDING_URL + playerTag, TOKEN);
+        Request request = requestBuilder.buildRequest(PLAYER_FINDING_URL + playerTag);
 
         try (Response response = httpClient.newCall(request).execute()) {
 
@@ -62,13 +61,19 @@ class FindingPlayerService {
                 playerModel.getRole(),
                 playerModel.getWarPreference(),
                 playerModel.getDonations(),
-                playerModel.getDonationsReceived(),
-                playerModel.getClan().getName()
+                playerModel.getDonationsReceived()
         );
+
+        if(playerModel.getClan() != null){
+
+            playerEntity.setClanName(playerModel.getClan().getName());
+
+        }
 
         playerRepository.save(playerEntity);
 
         return playerEntity;
+
     }
 
 
