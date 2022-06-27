@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Table(name = "clans")
 @Data
@@ -20,11 +22,13 @@ public class ClanEntity {
     private String name;
     @JsonProperty("clanLevel")
     private Integer clanLevel;
+    private LocalDateTime requestDate;
 
-    public ClanEntity(String tag, String name, Integer clanLevel) {
+    public ClanEntity(String tag, String name, Integer clanLevel, LocalDateTime requestDate) {
         this.tag = tag;
         this.name = name;
         this.clanLevel = clanLevel;
+        this.requestDate = requestDate;
     }
 
     public ClanEntity() {
