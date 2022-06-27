@@ -36,7 +36,6 @@ class ClanService {
         if (entityGotFromDatabase == null) {
 
             ClanEntity clanEntity = createEntityToReturn(clanTag);
-            clanRepository.save(clanEntity);
 
             return clanEntity;
 
@@ -45,7 +44,10 @@ class ClanService {
             log.info(entityGotFromDatabase.getName());
             clanRepository.deleteByTag(clanTag);
 
-            return createEntityToReturn(clanTag);
+            ClanEntity clanEntity = createEntityToReturn(clanTag);
+            clanRepository.save(clanEntity);
+
+            return clanEntity;
 
         } else {
 
