@@ -35,10 +35,14 @@ class ClanService {
 
         if (entityGotFromDatabase == null) {
 
-            return createEntityToReturn(clanTag);
+            ClanEntity clanEntity = createEntityToReturn(clanTag);
+            clanRepository.save(clanEntity);
+
+            return clanEntity;
 
         } else if (checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
 
+            log.info(entityGotFromDatabase.getName());
             clanRepository.deleteByTag(clanTag);
 
             return createEntityToReturn(clanTag);
@@ -69,10 +73,7 @@ class ClanService {
 
             }
 
-            ClanEntity clanEntity = new ClanEntity(clanModel.getTag(), clanModel.getName(), clanModel.getClanLevel(), now);
-            clanRepository.save(clanEntity);
-
-            return clanEntity;
+            return new ClanEntity(clanModel.getTag(), clanModel.getName(), clanModel.getClanLevel(), now);
 
         }
 
