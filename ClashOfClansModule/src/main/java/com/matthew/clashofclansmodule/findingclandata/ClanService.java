@@ -81,7 +81,7 @@ class ClanService {
 
     public boolean checkIfUserIsAvailableToSendRequest(ClanEntity entityToCheck) {
 
-        if (entityToCheck.getRequestDate().getSecond() - System.currentTimeMillis() == 30) {
+        if (entityToCheck.getRequestDate().getMinute() - now.getMinute() >= 1) {
 
             log.info("available");
 
