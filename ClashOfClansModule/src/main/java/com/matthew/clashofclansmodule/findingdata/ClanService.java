@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.findingclandata;
+package com.matthew.clashofclansmodule.findingdata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matthew.clashofclansmodule.RequestBuilder;
@@ -46,6 +46,7 @@ class ClanService {
 
         } else {
 
+            clanRepository.deleteByTag("#" + clanTag);
             return createEntityToReturn(clanTag);
 
         }

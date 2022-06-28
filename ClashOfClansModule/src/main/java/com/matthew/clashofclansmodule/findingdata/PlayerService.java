@@ -1,4 +1,4 @@
-package com.matthew.clashofclansmodule.findingplayerdata;
+package com.matthew.clashofclansmodule.findingdata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.matthew.clashofclansmodule.RequestBuilder;
@@ -13,7 +13,9 @@ import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import static com.matthew.clashofclansmodule.ConstData.PLAYER_FINDING_URL;
 
@@ -22,19 +24,52 @@ import static com.matthew.clashofclansmodule.ConstData.PLAYER_FINDING_URL;
 @Slf4j
 class PlayerService {
 
-    private final OkHttpClient httpClient;
-    private final PlayerRepository playerRepository;
     private final RequestBuilder requestBuilder;
-    ObjectMapper objectMapper = new ObjectMapper();
+    private final PlayerRepository playerRepository;
+    private final OkHttpClient httpClient;
+    private final ObjectMapper objectMapper;
+    LocalDateTime now = LocalDateTime.now();
 
+    @Transactional
     public PlayerEntity findPlayer(String playerTag) throws IOException {
 
+        PlayerEntity entityGotFromDatabase = playerRepository.findByTag("#" + playerTag);
+
+        if (entityGotFromDatabase == null) {
+
+            return createEntityToReturn(playerTag);
+
+        } else if (!checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)) {
+
+            log.info(String.valueOf(checkIfUserIsAvailableToSendRequest(entityGotFromDatabase)));
+            return entityGotFromDatabase;
+
+        } else {
+
+            playerRepository.deleteByTag("#" + playerTag);
+            return createEntityToReturn(playerTag);
+
+        }
+
+    }
+
+    @NotNull
+    private PlayerEntity createEntityToReturn(String playerTag) throws IOException {
+
         Request request = requestBuilder.buildRequest(PLAYER_FINDING_URL + playerTag);
+
+        log.info(String.valueOf(request.url()));
 
         try (Response response = httpClient.newCall(request).execute()) {
 
             assert response.body() != null;
             PlayerModel playerModel = objectMapper.readValue(response.body().string(), PlayerModel.class);
+
+            if (!String.valueOf(response.code()).equals("200")) {
+
+                throw new IOException("Something's wrong with response");
+
+            }
 
             return createPlayerEntityAndSaveItInDatabase(playerModel);
 
@@ -44,6 +79,7 @@ class PlayerService {
 
     @NotNull
     private PlayerEntity createPlayerEntityAndSaveItInDatabase(PlayerModel playerModel) {
+
         PlayerEntity playerEntity = new PlayerEntity(
                 playerModel.getTag(),
                 playerModel.getName(),
@@ -61,10 +97,11 @@ class PlayerService {
                 playerModel.getRole(),
                 playerModel.getWarPreference(),
                 playerModel.getDonations(),
-                playerModel.getDonationsReceived()
+                playerModel.getDonationsReceived(),
+                now
         );
 
-        if(playerModel.getClan() != null){
+        if (playerModel.getClan() != null) {
 
             playerEntity.setClanName(playerModel.getClan().getName());
 
@@ -76,5 +113,22 @@ class PlayerService {
 
     }
 
+    public boolean checkIfUserIsAvailableToSendRequest(PlayerEntity entityToCheck) {
+
+        if (entityToCheck.getRequestDate().getMinute() - now.getMinute() >= 1) {
+
+            log.info("available");
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+
+    }
 
 }
+
+

@@ -7,4 +7,6 @@ public interface PlayerRepository extends JpaRepository<PlayerEntity, Long> {
 
     PlayerEntity findByTag(String tag);
 
+    void deleteByTag(String tag);
+
 }
