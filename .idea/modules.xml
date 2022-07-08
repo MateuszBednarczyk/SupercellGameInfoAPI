@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ClashOfClansModule/ClashOfClansModule.iml" filepath="$PROJECT_DIR$/ClashOfClansModule/ClashOfClansModule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ClashRoyaleModule/ClashRoyaleModule.iml" filepath="$PROJECT_DIR$/ClashRoyaleModule/ClashRoyaleModule.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MainModule/MainModule.iml" filepath="$PROJECT_DIR$/MainModule/MainModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/SupercellGameInfoAPI.iml" filepath="$PROJECT_DIR$/.idea/SupercellGameInfoAPI.iml" />
     </modules>
   </component>
